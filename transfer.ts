@@ -41,21 +41,21 @@ export default function transform({ header, events }: Block) {
     new Date(timestamp as string).getTime() / 1000
   );
   return events
-    .map(({ event, transaction }) => {
+    .map(({ event, transaction }, idx) => {
       if (!event || !event.data || !event.keys || !transaction?.meta)
         return null;
       const from = event.keys[1];
       const to = event.keys[2];
       const value = toBigInt(event.data[0]).toString();
       return {
-        block_number: BigInt(blockNumber),
-        tx_index: transaction.meta.transactionIndex ?? 0,
-        event_index: event.index ?? 0,
-        tx_hash: transaction.meta.hash,
-        timestamp: Math.floor(timestamp_unix),
-        from: standariseAddress(from),
-        to: standariseAddress(to),
-        value,
+        block_number: Number(blockNumber),
+        tx_index: Number(transaction.meta.transactionIndex ?? 0),
+        event_index: Number(event.index ?? 0),
+        tx_hash: String(transaction.meta.hash),
+        timestamp: Number(Math.floor(timestamp_unix)),
+        from: String(standariseAddress(from)),
+        to: String(standariseAddress(to)),
+        value: String(value),
         cursor: null,
       };
     })

@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "strk_transfers" (
-    "id" BIGSERIAL NOT NULL,
-    "block_number" BIGINT NOT NULL,
+    "id" SERIAL NOT NULL,
+    "block_number" INTEGER NOT NULL,
     "tx_index" INTEGER NOT NULL,
     "event_index" INTEGER NOT NULL,
     "tx_hash" VARCHAR(66) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE "strk_transfers" (
     "value" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
-    "_cursor" BIGINT,
+    "_cursor" TEXT,
 
     CONSTRAINT "strk_transfers_pkey" PRIMARY KEY ("id")
 );

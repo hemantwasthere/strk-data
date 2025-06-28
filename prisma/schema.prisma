@@ -11,22 +11,13 @@ datasource db {
 }
 
 model strk_transfers {
-    id           BigInt   @id @default(autoincrement())
-    block_number BigInt
+    block_number Int     @unique
     tx_index     Int
     event_index  Int
-    tx_hash      String   @db.VarChar(66)
+    tx_hash      String  @db.VarChar(66)
     timestamp    Int
-    from         String   @db.VarChar(66)
-    to           String   @db.VarChar(66)
+    from         String  @db.VarChar(66)
+    to           String  @db.VarChar(66)
     value        String
-    created_at   DateTime @default(now())
-    updated_at   DateTime @updatedAt
-    cursor       BigInt?  @map("_cursor")
-
-    @@unique([tx_hash, event_index])
-    @@index([block_number])
-    @@index([from])
-    @@index([to])
-    @@index([timestamp])
+    cursor       String? @map("_cursor")
 }
