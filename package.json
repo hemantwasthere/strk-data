@@ -3,15 +3,29 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
-        "prisma:migrate": "prisma migrate dev --name init --schema=prisma/schema.prisma",
-        "prisma:studio": "prisma studio --schema=prisma/schema.prisma",
-        "run:indexer": "apibara run --allow-env=.env transfer.ts -A dna_gNpiQ7hlmF7XUnedCziP --sink-id=1"
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:push": "drizzle-kit push",
+        "db:studio": "drizzle-kit studio",
+        "run:indexer": "apibara run --allow-env=.env indexers/transfer.indexer.ts -A dna_gNpiQ7hlmF7XUnedCziP --sink-id=1",
+        "dev": "apibara dev",
+        "build": "apibara build",
+        "start": "apibara start"
     },
     "dependencies": {
-        "@prisma/client": "^5.22.0"
+        "@apibara/plugin-drizzle": "2.1.0-beta.38",
+        "@prisma/client": "^5.22.0",
+        "dotenv": "^17.0.0",
+        "drizzle-orm": "^0.44.2",
+        "pg": "^8.16.3",
+        "starknet": "^7.6.2"
     },
     "devDependencies": {
+        "@apibara/protocol": "2.1.0-beta.38",
+        "@apibara/starknet": "2.1.0-beta.38",
+        "@types/pg": "^8.15.4",
+        "apibara": "2.1.0-beta.38",
+        "drizzle-kit": "^0.31.4",
         "prisma": "^5.22.0"
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE "strk_transfers" DROP COLUMN "id";
