@@ -35,18 +35,21 @@ export const config: Config<Starknet, Postgres> = {
 
 export default function transform({ header, events }: Block) {
   if (!events || !header) return [];
-  ``;
+
   const { blockNumber, timestamp } = header;
   const timestamp_unix = Math.floor(
     new Date(timestamp as string).getTime() / 1000
   );
+
   return events
     .map(({ event, transaction }, idx) => {
       if (!event || !event.data || !event.keys || !transaction?.meta)
         return null;
-      const from = event.keys[1];
-      const to = event.keys[2];
-      const value = toBigInt(event.data[0]).toString();
+
+      const from = event.data[0];
+      const to = event.data[1];
+      const value = toBigInt(event.data[2]).toString();
+
       return {
         block_number: Number(blockNumber),
         tx_index: Number(transaction.meta.transactionIndex ?? 0),

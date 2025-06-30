@@ -6,7 +6,7 @@
         "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
         "prisma:migrate": "prisma migrate dev --name init --schema=prisma/schema.prisma",
         "prisma:studio": "prisma studio --schema=prisma/schema.prisma",
-        "run:indexer": "apibara run --allow-env=.env transfer.ts -A dna_gNpiQ7hlmF7XUnedCziP --sink-id=strk-transfer-00110"
+        "run:indexer": "apibara run --allow-env=.env transfer.ts -A dna_gNpiQ7hlmF7XUnedCziP --sink-id=1"
     },
     "dependencies": {
         "@prisma/client": "^5.22.0"
